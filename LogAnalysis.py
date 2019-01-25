@@ -75,7 +75,7 @@ def errors(cursor):
               ),
               no_of_errors AS (
                 SELECT time::date AS day, count(*) FROM log
-                WHERE status = '404 NOT FOUND'
+                WHERE status != '200 OK'
                 GROUP BY time::date
                 ORDER BY time::date
               ),
