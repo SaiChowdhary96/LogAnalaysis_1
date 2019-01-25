@@ -102,6 +102,7 @@ def errors(cursor):
                       rate_of_error=database_record[1]))
     print('=============================================================\n')
 
+
 if __name__ == "__main__":
 
     try:
