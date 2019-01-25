@@ -20,6 +20,7 @@ Connect to the virtual machine by using the following command:
 #### $ vagrant ssh
 
 Now a terminal opens and following is displayed:
+
 #### vagrant@vagrant-ubuntu-trusty-64:~$
 
 Now install pip, psycopg2 and postgresql using the following commands:
