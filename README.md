@@ -27,7 +27,9 @@ Now install pip, psycopg2 and postgresql using the following commands:
 #### $ sudo apt-get install python-psycopg2
 #### $ sudo apt-get install postgresql 
 
-Now download 'newsdata.zip' and extract it to the project folder.
+Now download 'newsdata.zip' from the following link:
+#### https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip
+and extract it to the project folder.
 A file with name 'newsdata.sql' will be extracted to the project folder.
 
 Now type in the following command:
