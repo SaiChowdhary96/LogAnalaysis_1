@@ -51,9 +51,9 @@ The following queries are used to answer the questions:
 
 For the first question(What are the most popular 3 articles of all time?):
 
-requested_query = """ SELECT articles.title, count(log.path) AS total_count FROM   log,articles
+`requested_query = """ SELECT articles.title, count(log.path) AS total_count FROM   log,articles
             WHERE  log.path = CONCAT('/article/', articles.slug) GROUP BY articles.title
-            ORDER BY total_count DESC LIMIT 3 """
+            ORDER BY total_count DESC LIMIT 3 """`
 
 For the second question(Who are the most popular article authors of all time?):
 requested_query = """
