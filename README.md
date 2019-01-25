@@ -59,16 +59,18 @@ requested_query = """
             ORDER BY total_count DESC
             LIMIT 3;
             """
+
 For the second question(Who are the most popular article authors of all time?):
 requested_query = """
-            SELECT authors.name, count(*) 
+            SELECT authors.name, count(*)
             AS total_count
             FROM   log, articles, authors
             WHERE  log.path = CONCAT('/article/', articles.slug)
             AND articles.author = authors.id
             GROUP BY authors.name
             ORDER BY total_count DESC;
-            """
+            """    
+    
 For the third question(On which days did more than 1% more of requests lead to errors?):
 requested_query = """
             WITH no_of_requests AS (
