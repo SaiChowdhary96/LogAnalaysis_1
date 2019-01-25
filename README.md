@@ -53,15 +53,12 @@ In this we use 'psycopg2' library to connect to postgresql database
 
 In order to connect to database the following code is used in my reporting tool
 
-`try:
-    
-    db_conn = psycopg2.connect(dbname='news')
-    
-    cursor = db_conn.cursor()
-
+```try:
+       db_conn = psycopg2.connect(dbname='news')
+       cursor = db_conn.cursor()
 except Exception:
-    
-    print("Failed to connect to the database.")`
+    print("Failed to connect to the database.")
+```
     
 I have used following functions to implement queries and get answers to the questions:
 #### popular_articles() - This function is used to print the results for the question 'What are the most popular 3 articles of all time?'
@@ -72,13 +69,20 @@ The following queries are used to answer the questions:
 
 #### For the first question(What are the most popular 3 articles of all time?):
 
-`requested_query = """ SELECT articles.title, count(log.path) AS total_count FROM   log,articles
-            WHERE  log.path = CONCAT('/article/', articles.slug) GROUP BY articles.title
-            ORDER BY total_count DESC LIMIT 3;"""`
+```requested_query = """
+            SELECT articles.title, count(log.path)
+            AS total_count
+            FROM   log,articles
+            WHERE  log.path = CONCAT('/article/', articles.slug)
+            GROUP BY articles.title
+            ORDER BY total_count DESC
+            LIMIT 3;
+            """
+```
 
 #### For the second question(Who are the most popular article authors of all time?):
 
-`requested_query = """
+```requested_query = """
             SELECT authors.name, count(*)
             AS total_count
             FROM   log, articles, authors
@@ -86,11 +90,12 @@ The following queries are used to answer the questions:
             AND articles.author = authors.id
             GROUP BY authors.name
             ORDER BY total_count DESC;
-            """`    
+            """
+```            
     
 #### For the third question(On which days did more than 1% more of requests lead to errors?):
 
-`requested_query = """
+```requested_query = """
             WITH no_of_requests AS (
                 SELECT time::date 
                 AS day, 
@@ -111,7 +116,8 @@ The following queries are used to answer the questions:
                 WHERE no_of_requests.day = no_of_errors.day
               )
             SELECT * FROM rate_of_error WHERE percentage_of_error > 1;
-    """`
+    """
+```
 
 The above three queries are placed in functions top_articles(), top_authors(), errors() for getting desired results.
 
