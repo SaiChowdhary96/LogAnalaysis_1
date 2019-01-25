@@ -54,9 +54,13 @@ In this we use 'psycopg2' library to connect to postgresql database
 In order to connect to database the following code is used in my reporting tool
 
 `try:
+    
     db_conn = psycopg2.connect(dbname='news')
+    
     cursor = db_conn.cursor()
+
 except Exception:
+    
     print("Failed to connect to the database.")`
     
 I have used following functions to implement queries and get answers to the questions:
