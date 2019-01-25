@@ -49,13 +49,13 @@ Now we need to create a reporting tool to answer the following questions:
 In this we use 'psycopg2' library to connect to postgresql database
 The following queries are used to answer the questions:
 
-For the first question(What are the most popular 3 articles of all time?):
+#### For the first question(What are the most popular 3 articles of all time?):
 
 `requested_query = """ SELECT articles.title, count(log.path) AS total_count FROM   log,articles
             WHERE  log.path = CONCAT('/article/', articles.slug) GROUP BY articles.title
             ORDER BY total_count DESC LIMIT 3 """`
 
-For the second question(Who are the most popular article authors of all time?):
+#### For the second question(Who are the most popular article authors of all time?):
 
 `requested_query = """
             SELECT authors.name, count(*)
@@ -67,7 +67,7 @@ For the second question(Who are the most popular article authors of all time?):
             ORDER BY total_count DESC;
             """`    
     
-For the third question(On which days did more than 1% more of requests lead to errors?):
+#### For the third question(On which days did more than 1% more of requests lead to errors?):
 
 `requested_query = """
             WITH no_of_requests AS (
