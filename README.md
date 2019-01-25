@@ -53,9 +53,10 @@ In this we use 'psycopg2' library to connect to postgresql database
 
 In order to connect to database the following code is used in my reporting tool
 
-```try:
-       db_conn = psycopg2.connect(dbname='news')
-       cursor = db_conn.cursor()
+```
+try:
+    db_conn = psycopg2.connect(dbname='news')
+    cursor = db_conn.cursor()
 except Exception:
     print("Failed to connect to the database.")
 ```
@@ -69,7 +70,8 @@ The following queries are used to answer the questions:
 
 #### For the first question(What are the most popular 3 articles of all time?):
 
-```requested_query = """
+```
+requested_query = """
             SELECT articles.title, count(log.path)
             AS total_count
             FROM   log,articles
@@ -82,7 +84,8 @@ The following queries are used to answer the questions:
 
 #### For the second question(Who are the most popular article authors of all time?):
 
-```requested_query = """
+```
+requested_query = """
             SELECT authors.name, count(*)
             AS total_count
             FROM   log, articles, authors
@@ -95,7 +98,8 @@ The following queries are used to answer the questions:
     
 #### For the third question(On which days did more than 1% more of requests lead to errors?):
 
-```requested_query = """
+```
+requested_query = """
             WITH no_of_requests AS (
                 SELECT time::date 
                 AS day, 
